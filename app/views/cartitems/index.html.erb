@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body class="Cartitems-Page">
+  <div class="activemenu">
+    <p class="activemenu-name2">Activemenu : <%= Menu.find_by(activemenu: true).name %></p>
+  </div>
+  <form action="/menus" method="get">
+    <%= button_tag(value="Add more items",class: "Back") %>
+  </form>
+  <div class="menu-table">
+    <h1 class="Cart-head">Your Cart Items</h1>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+      <% @cartitems.order(:name).each do |t| %>
+        <tr>
+          <td><%= t.name %></td>
+          <td><%= t.price %></td>
+          <td>
+            <%= form_with(url: "/cartitems/#{t.id}", method: "put", class: "qty") do %>
+              <button type="button" class="spins" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); this.form.submit()">-</button>
+              <%= number_field_tag(name="quantity",value="#{t.quantity}",class: "table-qty",onclick: "this.form.submit()") %>
+              <button type="button" class="spins" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); this.form.submit()">+</button>
+            <% end %>
+          </td>
+          <td><%= @cartitems.total(t.id) %></td>
+          <td class="delete">
+            <a href="javascript:void(0)">
+              <%= form_with(url: "/cartitems/#{t.id}", method: "delete") do %>
+                <%= image_submit_tag("delete.png", class: "cartitem-delete") %>
+              <% end %>
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <hr>
+    <p class="grandtotal">Grand Total = <%= Cartitem.sum(@cartitems) %></p>
+    <div class="buttons">
+      <%= form_with(url: "cartitems", method: "delete") do %>
+        <input type="submit" class="cancelorder" value="Cancel order">
+      <% end %>
+      <%= form_with(url: "orders", method: "post") do %>
+        <input type="Submit" class="placeorder" value="Place order">
+      <% end %>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body class="Menus-Page">
+  <div class="Search-container">
+    <div class="SearchBar">
+      <input class="Search" type="text" id="searchbar" placeholder="Search here" onkeyup="myfunc()">
+      <input class="Go" type="button" value="Go!" onclick="scrollfunc()">
+    </div>
+    <ul class="datalist" id="myul">
+      <% Menuitem.all.each do |t| %>
+        <li class="Option" id="<%= t %>" onclick="myfunc2(this.id)"><%= t.name %></li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div class="activemenu">
+    <p class="activemenu-name">Activemenu : <%= Menu.find_by(activemenu: true).name %></p>
+    <form action= "userhome" method= "get">
+      <%= button_tag(value="Home", class: "home") %>
+    </form>
+    <form action="cartitems" method="get">
+      <%= button_tag(value="Cart", class: "save",onclick: "save()") %>
+    </form>
+  </div>
+    <% if @current_user.first_name == "Walk-incustomer" %>
+      <form action= "/pendingorders" method= "get" class="pendingcontainer">
+        <%= button_tag(value="Pending orders", class: "pending") %>
+      </form>
+    <% end %>
+  <div class="menu-table">
+    <h1 class="table-head">Menu List</h1>
+    <% Menuitem.order(:category_name).category.each do |category_name| %>
+      <h1 class="menuitem-type">
+        <%= category_name.category_name %>
+      </h1>
+
+      <table>
+        <tr>
+          <th class="menu-namecolumn">Item</th>
+          <th>Price</th>
+          <th class="th-qty">Quantity</th>
+          <th>Add</th>
+          <th>Desc.</th>
+        </tr>
+
+        <% Menuitem.match(Menu.activemenu?.id,category_name).each do |mi| %>
+          <tr id = "<%= mi.name %>">
+            <td class="menu-namecolumn"><%= mi.name %></td>
+            <td name="price"><%= mi.price %></td>
+            <td>
+              <form action= '/cartitems' method= "post" id="<%= mi.id %>"  class="qty">
+                <input type="hidden" name="id" value= <%= mi.id %>>
+                <button type="button" class="spins" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+                <input type="number" name="quantity" min=0 class="table-qty" required >
+                <button type="button" class="spins" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+              </form>
+            </td>
+            <td><%= button_tag(value="Add",class: "table-add",form: mi.id) %></td>
+            <td class="img">
+              <form action= '/menus/<%= mi.id %>' method= "get">
+                <%= image_submit_tag('right.png',class: "img-right") %>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </div>
+</body>
+<script>
+  function save() {
+    <% if @current_user.cartitems.count != 0 %>
+      alert("Your order is saved to Cart!");
+    <% else %>
+      alert("Please select items!");
+    <% end %>
+  }
+  function myfunc()
+  {
+    var text = document.getElementById("searchbar").value.toUpperCase();
+    let ul = document.getElementById("myul");
+    let li = ul.getElementsByTagName("li");
+    for(var i = 0; i < li.length; i++)
+    {
+      if(li[i].textContent.toUpperCase().startsWith(text) && text.length > 0)
+      {
+        li[i].style.display = "block";
+      }
+      else
+      {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  function myfunc2(id)
+  {
+    var text = document.getElementById(id).textContent;
+    document.getElementById("searchbar").value = text;
+  }
+  function scrollfunc()
+  {
+    var id = document.getElementById("searchbar").value;
+    var elem = document.getElementById(id);
+    elem.scrollIntoView({behavior: 'smooth'});
+  }
+</script>
