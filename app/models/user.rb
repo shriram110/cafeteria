@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def self.show
-    User.all.where(role: "Customer")
+    User.all.where(role: "User")
   end
 
   def self.show_checker

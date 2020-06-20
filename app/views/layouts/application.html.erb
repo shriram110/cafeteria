@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cafeteria</title>
+    <title>Project2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,50 @@
   </head>
 
   <body>
+    <% if !@owner && @current_user %>
+      <p class="User-header">
+        <% if @current_user.first_name == "Walk-incustomer" %>
+          Welcome <%= @current_billingclerk.first_name %>!
+        <% else %>
+          Welcome <%= @current_user.first_name %>!
+        <%end%>
+        <%= link_to "Sign out", destroy_session_path,class: "signout", method: "delete" %>
+      </p>
+      <div class="header">
+        Maharaja Restaurant
+      </div>
+    <% end %>
+    <% if @owner %>
+      <header>
+        <p class="Text">Cafeteria</p>
+       <%= link_to "Sign out", destroy_session_path,class: "Sign-out", method: "delete" %>
+      </header>
+      <input type="checkbox" id="check">
+      <label for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+      </label>
+      <nav class="Class">
+        <ul class="List">
+          <li><a href="/users"> Search Users</a></li>
+          <li><a href="/users/checkers"> Manage Checkers</a></li>
+          <li><a href="/menuitems"> Manage Menu</a></li>
+          <li><a href="/menus"> View Menu</a></li>
+          <li class="Orders-design"><a href="/orders"> Sales Report</a></li>
+          <li><a href="/orders/users"> Check Order</a></li>
+        </ul>
+      </nav>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="Flash-notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="Flash-error">
+        <%= flash[:error] %>
+      </p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

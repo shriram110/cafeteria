@@ -27,6 +27,6 @@ class Menuitem < ActiveRecord::Base
   end
   def self.display_list(menu)
     menus = menu ? Menu.find_by(name: menu.name) : Menu.first
-    menus.menu_items
+    menus.menuitems
   end
 end

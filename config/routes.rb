@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :menus
+  patch "users/select", to: "users#select"
   resources :users do
     member do
       get :confirm_email
@@ -12,8 +13,7 @@ Rails.application.routes.draw do
   resources :menuitems
   get "orders/report", to: "orders#report"
   get "menuitems/hold", to: "menuitems#hold"
-  patch "users/select", to: "users#select"
-  patch "users/details", to: "users#details"
+
   get "users/checkers", to: "users#show", as: :checkers
   post "orders/hold", to: "orders#hold"
   post "orders/select", to: "orders#select"
