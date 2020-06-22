@@ -14,6 +14,30 @@ class UsersController < ApplicationController
     render "search"
   end
 
+  def hold
+    if params[:from_date] == "" || params[:to_date] == ""
+      flash[:error] = "Start Date or End Date Should not be empty!!"
+    elsif params[:from_date] > params[:to_date]
+      flash[:error] = "Enter a valid date!!"
+    end
+    session[:from_date] = params[:from_date]
+    session[:to_date] = params[:to_date]
+    redirect_to report_path
+  end
+
+  def edit
+    if session[:user]
+      name = session[:user].split(" ")
+      name[1] = name[1] ? name[1] : ""
+      @users = User.all.find_by("first_name = ? and last_name = ?", name[0], name[1])
+      @from = session[:from_date]
+      @to = session[:to_date]
+    else
+      @users = session[:user]
+    end
+    render "report"
+  end
+
   def select
     session[:user] = params[:user_name]
     redirect_to users_path

@@ -114,15 +114,15 @@
 .User-order {
   margin-left: 20vw;
   padding: 0.7vw;
-  font-size: 1.4vw;
-  margin-bottom: 2vw;
+  font-size: 1.5vw;
   background-color: green;
   border: 1px solid transparent;
   border-radius: 5px;
   color: white;
 }
-.Order-Container {
-  display: none;
+.User-order1 {
+  padding-top: 1.5vw;
+  padding-bottom: 4vw;
 }
 .Current-user1 {
   display: flex;
