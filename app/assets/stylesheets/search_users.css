@@ -42,17 +42,15 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 1px 7px rgb(109, 107, 107);
 }
 .Search-container1 .Not-found {
-  font-size: 1.5vw;
+  font-size: 1.7vw;
   text-align: center;
-  margin-top: 1vw;
+  margin-top: 2vw;
 }
-
 .Search-details {
   display: flex;
   margin-top: 3.5vw;
   margin-left: 3.5vw;
 }
-
 .Search-detailshead {
   font-size: 1.6vw;
 }
@@ -108,15 +106,11 @@
   border: 2px solid black;
   padding: 0.7vw;
 }
-
 .Search-table {
   margin-top: 0.2vw;
   margin-left: 4vw;
   width: 58%;
   display: none;
-}
-
-.Search-box {
 }
 .User-order {
   margin-left: 20vw;
@@ -151,6 +145,9 @@
   .Search-container1 {
     width: 70%;
     margin-top: 7vw;
+  }
+  .Search-container1 .Not-found {
+    font-size: 3.5vw;
   }
   .Srch {
     margin-top: 5vw;
