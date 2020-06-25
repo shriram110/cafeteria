@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,10 +25,23 @@
       </div>
     <% end %>
     <% if @owner %>
-      <header>
-        <p class="Text">Cafeteria</p>
-       <%= link_to "Sign out", destroy_session_path,class: "Sign-out", method: "delete" %>
-      </header>
+      <div class="User-header1">
+      <%= image_tag("logo1.png", class: "Logo")%>
+        <div class="header2">
+          <h1>Maharajah</h1>
+          <h2>Restaurant</h2>
+        </div>
+        <nav class="Links">
+          <a href="/users"> Search Users</a>
+          <a href="/menuitems"> Manage Menu</a>
+          <a href="/menus"> View Menu</a>
+          <a href="/orders"> Sales Report</a>
+          <%= link_to "Sign out", destroy_session_path,class: "Sign-out", method: "delete" %>
+        </nav>
+
+
+      </div>
+
       <input type="checkbox" id="check">
       <label for="check">
         <i class="fas fa-bars" id="btn"></i>
@@ -36,7 +50,6 @@
       <nav class="Class">
         <ul class="List">
           <li><a href="/users"> Search Users</a></li>
-          <li><a href="/users/checkers"> Manage Checkers</a></li>
           <li><a href="/menuitems"> Manage Menu</a></li>
           <li><a href="/menus"> View Menu</a></li>
           <li class="Orders-design"><a href="/orders"> Sales Report</a></li>

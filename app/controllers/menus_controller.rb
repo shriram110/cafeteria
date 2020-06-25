@@ -33,4 +33,14 @@ class MenusController < ApplicationController
     menu.save!
     redirect_to menus_path
   end
+
+  def destroy
+    id = params[:id]
+    menu = Menu.find(id)
+    flash[:notice] = "#{menu.name} deleted successfully"
+    menuitems = menu.menuitems
+    menuitems.delete
+    menu.delete
+    redirect_to menus_path
+  end
 end

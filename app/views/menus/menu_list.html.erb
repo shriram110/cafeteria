@@ -6,18 +6,21 @@
   <script src="https://kit.fontawesome.com/fc0bcca8a3.js" crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
-<body>
-
-  <div class="Act-Menu">
-    <h1 class=ActiveMenu-title>Active Menu :</h1>
-    <p class="ActiveMenu-name"><%= Menu.activemenu%></p>
-    </div>
+<body class="MenuList-OwnerPage">
+<div class="Activemenu">
+    <p class="activemenu-name">Activemenu : <%= Menu.find_by(activemenu: true).name %></p>
+</div>
 <section class="Container">
 
     <div class="Menu">
 
       <% Menu.display.each do |menu|%>
+      <div class="MenuDelete">
        <p class="Menu-name"> <a name=<%= menu.name.delete " " %>><%= menu.name %></a></p>
+        <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+          <%= image_submit_tag('trash-can-outline.svg',class: "Delete") %>
+        <% end %>
+      </div>
        <% Menuitem.display_category(menu).each do |category|%>
        <h1 class="Category-name"><%= category.category_name%></h1>
        <table class="MenuTable">
@@ -46,8 +49,16 @@
     <li> <a href=<%= "#"+(menu.name.delete " ") %>> <%= menu.name %> </a ></li>
     <% end %>
   </ul>
+
     </div>
+     <%= image_submit_tag('arrow1.png',class: "Modal-arrow", onclick: "topfunction()") %>
   </section>
 
 </body>
 </html>
+<script>
+  function topfunction(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,60 +10,54 @@
 </head>
 
 
-<body>
-
-
+<body class="Search-OwnerPage">
   <div class="Search-box">
-  <%= form_with(url: "/users/select", method: "patch") do %>
-  <div class="Srch">
-    <%= image_submit_tag('search.svg',class: "Search-img") %>
-    <input class="Search3" name="user_name" autocomplete="off" type="text" placeholder="Type here to Search" id="Search" onkeyup="searchFunc()">
-    <%= submit_tag("View Details", class: "View-details",onclick: "Func1()") %>
-  </div>
-  <% end %>
-   <ul class="Unordered-list1" id="List">
-  <% User.show.each do |user|%>
-    <li class="Checker-list" onclick="MyFunc(this.id)" id="<%=user.first_name %>"> <%=user.first_name+" "+user.last_name%></li>
-  <% end %>
-  </ul>
+    <%= form_with(url: "/users/select", method: "patch") do %>
+      <div class="Srch">
+        <%= image_submit_tag('search.svg',class: "Search-img") %>
+        <input class="Search3" name="user_name" autocomplete="off" type="text" placeholder="Type here to Search" id="Search" onkeyup="searchFunc()">
+        <%= submit_tag("View Details", class: "View-details",onclick: "Func1()") %>
+      </div>
+    <% end %>
+    <ul class="Unordered-list1" id="List">
+      <% User.show.each do |user|%>
+        <li class="Checker-list" onclick="MyFunc(this.id)" id="<%=user.first_name %>"> <%=user.first_name+" "+user.last_name%></li>
+      <% end %>
+    </ul>
   </div>
   <div class="Search-container1" id="Search-container">
-  <%= image_submit_tag("user.png",class: "User-png") %>
+    <div class="Searchcontainer1-image">
+      <%= image_submit_tag("user.png",class: "User-png") %>
+    </div>
     <h1 class="User-title">User Details</h1><hr>
     <% if @users == nil%>
-    <h1 class=<%= @users?"found": "Not-found"%>>User not Found!!</h1>
+      <h1 class=<%= @users?"found": "Not-found"%>>User not Found!!</h1>
     <% else %>
     <div class="Search-details">
-      <h1>User-Id</h1>
-      <h1 style="margin-left:4.5vw;">:</h1>
+      <h1 class="Search-detailshead">User-Id :</h1>
       <p><%=@users.id%></p>
     </div>
     <div class="Search-details">
-      <h1>First Name  </h1>
-      <h1 style="margin-left:1vw;">:</h1>
+      <h1 class="Search-detailshead">First Name :</h1>
       <p><%= @users.first_name%></p>
     </div>
     <div class="Search-details">
-      <h1>Last Name  </h1>
-      <h1 style="margin-left:1.4vw;">:</h1>
+      <h1 class="Search-detailshead">Last Name :</h1>
       <p><%= @users.last_name%></p>
     </div>
     <div class="Search-details">
-      <h1>Email-Id  </h1>
-      <h1 style="margin-left:3.5vw;">:</h1>
+      <h1 class="Search-detailshead">Email-Id :</h1>
       <p><%= @users.email_id%></p>
     </div>
     <div class="Search-details" >
-      <h1>Role  </h1>
-      <h1 style="margin-left:7.5vw;">:</h1>
+      <h1 class="Search-detailshead">Role :</h1>
       <p><%= @users.role%></p>
     </div>
-    <div class="Search-details1">
-       <h1>Account created at</h1>
+    <div class="Search-detailss1">
+       <h1 class="Search-detailshead2">Account created at</h1>
     </div>
     <div class="Search-details2">
-       <h1>Date & Time</h1>
-       <h1>:</h1>
+       <h1 class="Search-detailshead">Date & Time :</h1>
        <p><%= @users.created_at.to_s(:long)%></p>
     </div>
     <div class="User-order1">

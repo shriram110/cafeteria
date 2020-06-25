@@ -1,77 +1,79 @@
 .Srch .Search-img {
   height: 3vw;
-  margin-top: 2.4vw;
 }
 .Srch,
 .Srch1 {
-  margin-top: 3vw;
+  justify-content: center;
   display: flex;
-  padding-bottom: 0vw;
-  padding-left: 2vw;
 }
 
 .Search3,
 .Search4 {
-  margin-top: 2vw;
-  margin-left: 1vw;
-  padding: 1vw;
+  margin-right: 1.5vw;
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
   border-radius: 5px;
   border: 1px solid transparent;
   background-color: #dad6d6;
   color: #1e1e1e;
-  width: 58%;
-  font-size: 1.5vw;
+  height: 2.5vw;
+  width: 30%;
+  font-size: 1.3vw;
 }
 
 .View-details {
-  background-color: rgb(15, 99, 15);
-  font-size: 1.5vw;
+  background-color: #2f2869;
+  font-size: 1.3vw;
   color: rgb(250, 248, 248);
-  padding: 0.5vw;
+  padding: 0.4vw 0.7vw;
   border-radius: 5px;
-  margin: 2vw 0 0 5vw;
-
   border: 1px solid transparent;
+  height: 2.5vw;
 }
 .Search-container1 {
-  background-color: rgb(255, 223, 223);
-  margin-left: 35vw;
+  background-color: #def2f1;
+  margin: auto;
   width: 50%;
-  margin-top: 5vw;
+  font-family: sans-serif;
+  margin-top: 2.5vw;
+  padding-bottom: 1.5vw;
   border-radius: 30px;
   margin-bottom: 2vw;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 1px 7px rgb(109, 107, 107);
 }
 .Search-container1 .Not-found {
-  margin-left: 12vw;
-  padding-top: 7vw;
-  padding-bottom: 7vw;
-  font-size: 3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  margin-top: 1vw;
 }
-.User-title {
-  font-size: 2vw;
-  padding-top: 0.5vw;
-  margin-left: 19vw;
-  margin-bottom: 1vw;
-}
+
 .Search-details {
   display: flex;
   margin-top: 3.5vw;
   margin-left: 3.5vw;
-  width: 100%;
 }
-.Search-container1 h1 {
-  font-weight: 600;
-  font-size: 1.7vw;
+
+.Search-detailshead {
+  font-size: 1.6vw;
+}
+.Search-detailshead2 {
+  font-size: 1.5vw;
+  background: #2f2869;
+  margin-right: 2vw;
+  padding: 0.8vw;
+  color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+  margin-left: 2vw;
+  margin-top: 2vw;
 }
 .User-png {
-  margin-left: 22vw;
   width: 12%;
   margin-top: 0.5vw;
 }
 .Search-container1 p {
   margin-left: 1vw;
-  font-size: 1.7vw;
+  font-size: 1.4vw;
 }
 .Search-details1 {
   margin-top: 3.5vw;
@@ -85,7 +87,17 @@
   margin-top: 2vw;
   margin-bottom: 2vw;
 }
-
+.Search-details,
+.Search-details1,
+.Search-details2 {
+  margin-left: 15vw;
+}
+.Search-details p,
+.Search-details1 p,
+.Search-details2 p {
+  font-size: 1.6vw;
+  font-weight: 600;
+}
 .Search-table th {
   background-color: rgb(148, 183, 218);
   padding: 0.4vw;
@@ -103,19 +115,14 @@
   width: 58%;
   display: none;
 }
-.Search-table tr:hover {
-  background-color: lightblue;
-}
-.Search-box {
-  margin-left: 30vw;
 
-  width: 65%;
+.Search-box {
 }
 .User-order {
   margin-left: 20vw;
   padding: 0.7vw;
   font-size: 1.5vw;
-  background-color: green;
+  background-color: #2f2869;
   border: 1px solid transparent;
   border-radius: 5px;
   color: white;
@@ -135,4 +142,57 @@
 }
 .Current-user1 p {
   margin-left: 1.4vw;
+}
+.Searchcontainer1-image {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 600px) {
+  .Search-container1 {
+    width: 70%;
+    margin-top: 7vw;
+  }
+  .Srch {
+    margin-top: 5vw;
+  }
+  .Search3 {
+    width: 40%;
+    font-size: 3vw;
+    padding: 3.5vw;
+  }
+  .View-details {
+    font-size: 3vw;
+    padding-bottom: 4vw;
+    margin-top: 1vw;
+  }
+  .Search-img {
+    display: none;
+  }
+  .Unordered-list1 {
+    width: 40%;
+    margin-left: 19vw;
+  }
+  .Checker-list {
+    font-size: 3.5vw;
+    padding-top: 2vw;
+    padding-bottom: 1.7vw;
+  }
+  .User-order {
+    margin-left: 25vw;
+    font-size: 2.7vw;
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
+  }
+  .Search-container1 h1,
+  .Search-container1 p {
+    font-size: 3.5vw;
+    line-height: 4vw;
+    margin-top: 1.2vw;
+  }
+  .Search-detailshead2 {
+    padding: 0.5vw;
+  }
+  .User-title {
+    margin-bottom: 2vw;
+  }
 }

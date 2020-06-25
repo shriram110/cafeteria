@@ -15,7 +15,7 @@
       <input class="Go" type="button" value="Go!" onclick="scrollfunc()">
     </div>
     <ul class="datalist" id="myul">
-      <% Menuitem.all.each do |t| %>
+      <% Menu.find_by(activemenu: true).menuitems.all.each do |t| %>
         <li class="Option" id="<%= t %>" onclick="myfunc2(this.id)"><%= t.name %></li>
       <% end %>
     </ul>
@@ -37,12 +37,12 @@
     <% end %>
   <div class="menu-table">
     <h1 class="table-head">Menu List</h1>
-    <% Menuitem.order(:category_name).category.each do |category_name| %>
+    <% Menuitem.display_category(Menu.find_by(activemenu: true)).each do |category_name| %>
       <h1 class="menuitem-type">
         <%= category_name.category_name %>
       </h1>
 
-      <table>
+      <table class="TableMenu">
         <tr>
           <th class="menu-namecolumn">Item</th>
           <th>Price</th>
@@ -51,7 +51,7 @@
           <th>Desc.</th>
         </tr>
 
-        <% Menuitem.match(Menu.activemenu?.id,category_name).each do |mi| %>
+        <% Menuitem.find2(category_name.category_name).each do |mi| %>
           <tr id = "<%= mi.name %>">
             <td class="menu-namecolumn"><%= mi.name %></td>
             <td name="price"><%= mi.price %></td>

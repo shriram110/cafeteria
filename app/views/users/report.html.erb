@@ -9,7 +9,7 @@
 </head>
 
 
-<body>
+<body class="UserReport-OwnerPage">
 <div class="Order-Container" id="User-order">
   <div class=Current-user1>
     <h1>Name  :</h1>
@@ -58,18 +58,6 @@
           <h2 class=<%= order.delivered_at ? "Delivered" : "Pending"%>><%= order.delivered_at ? "Delivered" : "Pending"%></h2>
 
         </div>
-         <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
-        <div class="Box1">
-        <%= check_box_tag(name="delivered",
-                              value=nil,
-                              checked=order.delivered_at ? true : false ,
-                              class: "CheckBox",
-                              onclick:"this.form.submit()"
-                             )
-            %>
-            <h1 style="margin-top:0.5vw;">Click this to mark as <%= order.delivered_at ? "Pending" : "Delivered"%></h1>
-            </div>
-            <% end %>
       </li>
       </ol>
        <%= image_submit_tag('cancel.png',class: "Modal-close",onclick: "func1(#{order.id})") %>

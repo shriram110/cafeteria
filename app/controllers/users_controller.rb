@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def create
     if (@owner)
-      user = User.new(
+      user = User.create(
         first_name: params[:first_name],
         last_name: params[:last_name],
         email_id: params[:email],
@@ -66,15 +66,15 @@ class UsersController < ApplicationController
         password: params[:password],
         role: "User",
       )
-    end
-    if user.save
-      session[:current_user_id] = user.id
-      flash[:notice] = user.first_name + ", we have sent you a mail. Please click on the link to verify!"
-      UserMailer.registration_confirmation(user).deliver
-      redirect_to new_user_path
-    else
-      flash[:error] = user.errors.full_messages.join(", ")
-      redirect_to new_user_path
+      if user.save
+        session[:current_user_id] = user.id
+        flash[:notice] = user.first_name + ", we have sent you a mail. Please click on the link to verify!"
+        UserMailer.registration_confirmation(user).deliver
+        redirect_to new_user_path
+      else
+        flash[:error] = user.errors.full_messages.join(", ")
+        redirect_to new_user_path
+      end
     end
   end
 

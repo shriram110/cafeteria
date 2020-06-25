@@ -13,7 +13,9 @@ class Menuitem < ActiveRecord::Base
       puts t.imgaddr
     end
   end
-
+  def self.find2(category_name)
+    Menuitem.all.where("category_name = ?", category_name)
+  end
   def self.category
     Menuitem.select(:category_name).distinct
   end

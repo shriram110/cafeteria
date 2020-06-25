@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,125 +8,142 @@
   <title>Document</title>
 </head>
 
-<body>
-
+<body class="Menu-OwnerPage">
   <div class="AddDel">
-  <h1 class="Menu-title">Add New Menu</h1>
+    <h1 class="Menu-title">Add New Menu</h1>
     <%= form_with(url: "/menus", method: "post" ,class: "Add-NewMenu") do %>
       <div class="New-Menu">
         <h1 class="AddMenu">Menu name :</h1>
         <%= text_field_tag("name", nil, placeholder: "Type here", class: "MenuName") %>
       </div>
-
-  <%= submit_tag("Add", class: "Add",onclick: "myFunction()") %>
+      <div class="Submit-button">
+        <%= submit_tag("Add", class: "Add",onclick: "myFunction()") %>
+      </div>
     <% end %>
     <hr class="Horizontal">
     <h1 class="Menuitem-title">Add New Menuitem</h1>
     <%= form_with(url: "/menuitems", method: "post") do %>
-    <div class="Select-Item">
-
-      <div class="Select-Item1">
-        <h1>Select Menu :</h1>
-            <select name="name">
-              <% Menu.display.each do |menu|%>
-                <option value="<%= menu.name %>"><%= menu.name %></option>
-              <% end %>
+      <div class="Select-Item">
+        <div class="Select-Item1">
+          <h1 class="SelectMenu">Select Menu :</h1>
+              <select name="name">
+                <% Menu.display.each do |menu|%>
+                  <option value="<%= menu.name %>"><%= menu.name %></option>
+                <% end %>
+              </select>
+        </div>
+        <div class="Select-Item2">
+          <div>
+            <h1 class="SelectItem-head">Menu-Item name:</h1>
+            <%= text_field_tag("menuitem_name", nil, placeholder: "Type here", class: "ItemName") %>
+          </div>
+          <div>
+            <h1 class="SelectItem-head">Price:</h1>
+            <%= text_field_tag("price", nil, placeholder: "Type here",class: "Price") %>
+          </div>
+          <div>
+            <h1 class="SelectItem-head">Category name:</h1>
+            <select class="Select-category" name="category_name">
+              <option value="Break fast">Break Fast</option>
+              <option value="Brunch">Brunch</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Starters">Starters</option>
+              <option value="Drinks">Drinks</option>
+              <option value="Desserts">Desserts</option>
             </select>
-      </div>
-      <div class="Select-Item2">
-        <div>
-          <h1>Menu-Item name:</h1>
-          <%= text_field_tag("menuitem_name", nil, placeholder: "Type here", class: "Name") %>
-        </div>
-        <div>
-          <h1>Price:</h1>
-          <%= text_field_tag("price", nil, placeholder: "Type here",class: "Price") %>
-        </div>
-        <div>
-          <h1>Category name:</h1>
-          <select class="Select-category" name="category_name">
-                <option value="Break fast">Break fast</option>
-                <option value="Brunch">Brunch</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Starters">Starters</option>
-                <option value="Drinks">Drinks</option>
-                <option value="Desserts">Desserts</option>
-          </select>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="Select-Item3">
-      <div>
-        <h1 class="Description1"> Add Description:</h1>
-        <textarea class="TextArea" cols="30" rows="10" placeholder="Describe the Menu-Item" name="description"></textarea>
+      <div class="Select-Item3">
+        <div>
+          <h1 class="Description1"> Add Description:</h1>
+          <textarea class="TextArea" cols="30" rows="10" placeholder="Describe the Menu-Item" name="description"></textarea>
+        </div>
+        <div>
+          <h1 class="Description1">Image Address: </h1>
+          <%= text_field_tag("img_addr", nil,class: "Image-addr" ,placeholder: "Type here") %>
+        </div>
       </div>
-      <div>
-        <h1 class="Description1">Image Address: </h1>
-        <%= text_field_tag("img_addr", nil,class: "Image-addr" ,placeholder: "Type here") %>
+      <div class="Submit-button">
+        <%= submit_tag("Add", class: "Add",onclick: "myFunction1()") %>
       </div>
-    </div>
-    <%= submit_tag("Add", class: "Add",onclick: "myFunction1()") %>
-        <% end %>
-        <hr class="Horizontal">
-        <h1 class="Activemenu-title">Select Active Menu</h1>
+    <% end %>
+    <hr class="Horizontal">
+    <h1 class="Activemenu-title">Select Active Menu</h1>
     <%= form_with(url: "/menus/#{3}", method: "put") do %>
-    <div class="Select-Menu">
-      <h1 class="Active">Active Menu :</h1>
-
-        <select name="menu_name" id="select">
-          <% Menu.display.each do |menu|%>
-            <option value="<%= menu.name %>"><%= menu.name %></option>
-          <% end %>
-        </select>
-    </div>
-
-  <%= submit_tag("Select", class: "Select",onclick: "myFunction2()") %>
-  <% end %>
-  <hr class="Horizontal">
-  <h1 class="Edit">Edit Menu-Item</h1>
-
-   <div class="Select-Item">
-
-      <div class="Select-Item1" style="margin-left:5vw;">
-        <h1 style="margin-left:1vw;">Select Menu</h1>
-        <%= form_with(url: "/menuitems/#{4}/edit", method: "get") do %>
+      <div class="Select-Menu">
+        <h1 class="Active">Active Menu :</h1>
+          <select name="menu_name" id="select">
+            <% Menu.display.each do |menu|%>
+              <option value="<%= menu.name %>"><%= menu.name %></option>
+            <% end %>
+          </select>
+      </div>
+      <div class="Submit-button">
+        <%= submit_tag("Select", class: "Select",onclick: "myFunction2()") %>
+      </div>
+    <% end %>
+    <hr class="Horizontal">
+    <h1 class="Edit">Edit Menu-Item</h1>
+    <div class="Select-Item">
+      <div class="Select-Item4" style="margin-left:5vw;">
+        <div class="Select-Item11">
+          <h1 class="SelectMenu">Select Menu</h1>
+          <%= form_with(url: "/menuitems/#{4}/edit", method: "get") do %>
             <select name="menu_name" id="select1">
               <% Menu.display.each do |menu|%>
                 <option value="<%= menu.name %>" onclick="this.form.submit()"><%= menu.name %></option>
               <% end %>
             </select>
           <% end %>
-      </div>
-       <div class="Select-Item2"  style="margin-left:4vw;">
-       <%= form_with(url: "/menuitems/#{@menus.id}", method: "put") do %>
-       <div class="Edit-menuitem2">
-          <h1>Menu:</h1>
-          <h1 class="Menu-Selected"><%= @menus.name%></h1>
         </div>
-
-        <div class="Edit-menuitem1">
-          <h1>Menu Item :</h1>
-
-          <select class="Select-menu" name="menu_name" id="select1">
-
+        <div class="Select-Item12">
+          <h1 class="SelectMenu">Select MenuItem</h1>
+          <%= form_with(url: "/menuitems/show", method: "get") do %>
+            <select class="Select-menu" name="menuitem_name" id="select1">
               <% Menuitem.display_list(@menus).each do |menuitem|%>
-                <option value="<%= menuitem.name+"/"+menuitem.category_name %>"><%= menuitem.name %> (<%= menuitem.category_name%>)</option>
+                  <option value="<%= menuitem.name+"/"+menuitem.category_name %>" onclick="this.form.submit()"><%= menuitem.name %> (<%= menuitem.category_name%>)</option>
               <% end %>
             </select>
+          <% end %>
         </div>
-        <div class="Edit-menuitem2">
-          <h1>Price:</h1>
-          <%= text_field_tag("price", nil, placeholder: "Type here",class: "Price1") %>
-        </div>
-
       </div>
-    </div>
-    <%= submit_tag("Change", class: "Select2",onclick: "myFunction3()") %>
-        <% end %>
+      <%= form_with(url: "/menuitems/#{@menus.id}", method: "put") do %>
+        <div class="Select-Item5"  style="margin-left:4vw;">
+          <div class="Edit-menuitem2">
+            <h1 class="MenuSelected-head">Menu :</h1>
+            <h1 class="Menu-Selected"><%= @menus.name%></h1>
+          </div>
+          <div class="Edit-menuitem3">
+            <h1 class="MenuSelected-head1">Menuitem :</h1>
+            <h1 class="Menu-Selected" style="margin-left:3vw;"><%= @menuitems.name%></h1>
+          </div>
+          <div class="Edit-menuitem2">
+            <h1 class="MenuSelected-head">Price :</h1>
+            <%= text_field_tag("price", nil, placeholder: "Type here",class: "Price1") %>
+          </div>
+          <div class="Edit-menuitem2">
+            <h1 class="MenuSelected-head">Name:</h1>
+            <%= text_field_tag("Name", nil, placeholder: "Type here",class: "Price1") %>
+          </div>
+        </div>
+      </div>
+      <div class="Select-Item3">
+        <div>
+          <h1 class="Description1"> Add Description:</h1>
+          <textarea id="Desc" class="TextArea" cols="30" rows="10" placeholder="Describe the Menu-Item" name="description"></textarea>
+        </div>
+        <div>
+          <h1 class="Description1">Image Address: </h1>
+          <%= text_field_tag("img_addr", nil,class: "Image-addr" ,placeholder: "Type here") %>
+        </div>
+      </div>
+        <div class="Submit-button">
+          <%= submit_tag("Change", class: "Select2",onclick: "myFunction3()") %>
+        </div>
+      <% end %>
   </div>
-
 </body>
   <script>
     function myFunction()
@@ -149,5 +167,4 @@
      alert(document.getElementById("select1").value+" is selected ")
     }
 </script>
-
 </html>

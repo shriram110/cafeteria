@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+<div class="OrderContainer">
 <%= form_with(url: "/orders/hold", method: "post") do %>
   <div class="Report">
     <h1>Start Date:</h1>
@@ -23,8 +23,45 @@
     <h1>End Date:</h1>
     <input class="End" type="Date" placeholder="dd/mm/yyyy" name="to_date">
   </div>
+  <div class="Rep">
   <%= submit_tag("View Report",class: "View") %>
+  </div>
 <% end %>
+<hr>
+<div class="Report-container">
+  <div class="Title-box">
+    <h1 class="Orders-title">Orders Table</h1>
+    <%= image_submit_tag("filter1.png",class: "Filter-image",onclick: "func2()") %>
+    <h2>Filter</h2>
+  </div>
+  <div class="Date">
+  <div>
+    <h1>From-Date :</h1>
+    <h2><%= @from %></h2>
+  </div>
+   <div>
+    <h1>To-Date :</h1>
+    <h2><%= @to %></h2>
+  </div>
+ </div>
+   </div>
+<table class="Report-table">
+      <tr>
+        <th>Order-Id</th>
+        <th>User-Id</th>
+        <th>Ordered on</th>
+        <th style="padding-right:5vw;">Delivery Status</th>
+      </tr>
+    <% Order.display(@from,@to,@filter).each do |order|%>
+      <tr>
+        <td><%= order.id%></td>
+        <td><%= order.user_id%></td>
+        <td><%= order.ordered_at.strftime("%d-%b-%Y")%></td>
+        <td><%= order.delivered_at ? "Delivered" : "Pending"%>
+          <input type="image" src="details.svg" alt="Submit" class="Details1" onclick=func(<%= order.id%>)></td>
+      </tr>
+<% end %>
+    </table>
 <%= form_with(url: "/orders/select", method: "post") do %>
 <div class="Filter-Modal" id="filter">
 
@@ -38,6 +75,9 @@
   <label>
     <input type="radio"  name="filter" value="P">Pending alone
   </label>
+  <label>
+   <input type="radio" name="filter" value="O">Offline Orders
+  </label>
   <input type="image" src="cancel.png" alt="Submit" class="Modal-close" onclick=func3()>
   <%= submit_tag("Apply",class: "Apply") %>
   </div>
@@ -47,6 +87,7 @@
 <% if @from=="" || @to=="" ||Order.display(@from,@to,@filter)==[]%>
 <div class="Report-container">
   <h1 class="Orders-title1">Orders-not Found </h1>
+
   </div>
 <% else %>
 <% Order.display(@from,@to,@filter).each do |order|%>
@@ -101,39 +142,9 @@
    </div>
 <% end %>
 
-   <div class="Report-container">
-  <div class="Title-box">
-    <h1 class="Orders-title">Orders Table</h1>
-    <%= image_submit_tag("filter1.png",class: "Filter-image",onclick: "func2()") %>
-    <h2>Filter</h2>
-  </div>
-  <div class="Date">
-    <h1>From-Date :</h1>
-    <h2><%= @from %></h2>
-  </div>
-   <div class="Date" style="float:right;margin-right:7%;">
-    <h1>To-Date :</h1>
-    <h2><%= @to %></h2>
-  </div>
-    <table class="Report-table">
-      <tr>
-        <th>Order-Id</th>
-        <th>User-Id</th>
-        <th>Ordered on</th>
-        <th style="padding-right:5vw;">Delivery Status</th>
-      </tr>
-    <% Order.display(@from,@to,@filter).each do |order|%>
-      <tr>
-        <td><%= order.id%></td>
-        <td><%= order.user_id%></td>
-        <td><%= order.ordered_at.strftime("%d-%b-%Y")%></td>
-        <td><%= order.delivered_at ? "Delivered" : "Pending"%>
-          <input type="image" src="details.svg" alt="Submit" class="Details1" onclick=func(<%= order.id%>)></td>
-      </tr>
-<% end %>
-    </table>
-   </div>
+
    <% end %>
+   </div>
 </body>
 
 </html>

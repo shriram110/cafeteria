@@ -1,7 +1,14 @@
 class MenuitemsController < ApplicationController
   def index
     @menus = Menu.find_by(name: selected_menu)
+    @menuitems = Menuitem.find_by(name: selected_menuitem)
     render "menu"
+  end
+
+  def show
+    array = params[:menuitem_name].split("/")
+    session[:menuitem] = array[0]
+    redirect_to menuitems_path
   end
 
   def edit
@@ -37,12 +44,18 @@ class MenuitemsController < ApplicationController
 
   def update
     menu_id = params[:id]
-    array = params[:menu_name].split("/")
+    array = params[:menuitem_name].split("/")
     menuitem_name = array[0]
     category = array[1]
-    price = params[:price]
     menuitem = Menuitem.find_by("menu_id = ? and name = ? and category_name = ? ", menu_id, menuitem_name, category)
+    name = (params[:Name] == "") ? menuitem.name : params[:Name]
+    price = (params[:price] == "") ? menuitem.price : params[:price]
+    description = (params[:description] == "") ? menuitem.description : params[:description]
+    img_addr = (params[:img_addr] == "") ? menuitem.imgaddr : params[:img_addr]
     menuitem.price = price
+    menuitem.description = description
+    menuitem.imgaddr = img_addr
+    menuitem.name = name
     menuitem.save!
     redirect_to menus_path
   end
