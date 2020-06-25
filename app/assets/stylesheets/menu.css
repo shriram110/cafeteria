@@ -9,7 +9,6 @@
   padding: 1.4vw 2vw;
   color: #0c0c0c;
 }
-
 .New-Menu,
 .Select-Menu {
   display: flex;
@@ -93,7 +92,6 @@
   background-color: #2196f3;
   color: black;
 }
-
 .Select-Item {
   width: 90%;
   margin-top: 2vw;
@@ -158,12 +156,10 @@
   padding: 0.7vw 1vw;
   line-height: 1.8vw;
 }
-
 .Select-Menu select {
   margin-left: 1vw;
   font-size: 1.3vw;
 }
-
 .Select1 {
   background-color: rgb(18, 104, 18);
   color: white;
@@ -173,13 +169,11 @@
   border: 1px solid transparent;
   padding: 0.5vw 2vw;
 }
-
 .Select1 {
   margin-left: 3vw;
   margin-bottom: 2vw;
   margin-top: 2vw;
 }
-
 .Select-menu,
 .Select-category {
   font-size: 1.2vw;

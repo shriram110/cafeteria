@@ -7,7 +7,6 @@
   width: 11%;
   margin: 1vw 0 1vw 2vw;
 }
-
 .Links {
   display: flex;
   align-items: center;
@@ -52,7 +51,6 @@
   line-height: 5vw;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 .List li a {
   color: white;
   border-left: 0.3vw solid transparent;
@@ -63,9 +61,9 @@ label #btn,
 label #cancel {
   position: absolute;
   cursor: pointer;
-  background-color: #cc0e07dc;
+  background-color: #2f2869;
   border-radius: 3px;
-  top: 12vw;
+  margin-top: 23vw;
   visibility: hidden;
 }
 label #btn {
@@ -79,7 +77,6 @@ label #btn {
 label #cancel {
   z-index: 1111;
   left: -15%;
-
   font-size: 10vw;
   padding: 0.4vw 1vw;
   color: white;
@@ -87,9 +84,9 @@ label #cancel {
 }
 .List li a:hover {
   padding-left: 2vw;
-  color: #fc5b4f;
+  color: #9ad9f0;
   background: #1e1e1e;
-  border-left-color: #fc5b4f;
+  border-left-color: #9ad9f0;
 }
 #check {
   display: none;
@@ -156,5 +153,19 @@ label #cancel {
   .List li {
     font-size: 5.5vw;
     line-height: 16vw;
+  }
+  .User-header1 {
+    height: 25vw;
+  }
+  .Logo {
+    width: 23%;
+  }
+  .header2 h1 {
+    font-size: 8vw;
+    margin: 2vw 0 2vw 4vw;
+  }
+  .header2 h2 {
+    font-size: 5.5vw;
+    margin: 3vw 0 0vw 25vw;
   }
 }

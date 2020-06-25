@@ -11,7 +11,15 @@
       <%= form_with(url: "/users/select", method: "patch") do %>
         <div class="Srch">
           <%= image_submit_tag('search.svg',class: "Search-img") %>
-          <input class="Search3" name="user_name" autocomplete="off" type="text" placeholder="Type here to Search" id="Search" onkeyup="searchFunc()">
+          <%= text_field_tag("user_name" ,
+                              nil,
+                              class: "Search3",
+                              autofocus: "autofocus",
+                              autocomplete: "off",
+                              placeholder:"Type here to Search",
+                              onkeyup: "searchFunc()"
+                            )
+          %>
           <%= submit_tag("View Details", class: "View-details",onclick: "Func1()") %>
         </div>
       <% end %>
@@ -66,7 +74,7 @@
 <script>
  function searchFunc()
  {
-    let filter = document.getElementById('Search').value.toUpperCase();
+    let filter = document.getElementById('user_name').value.toUpperCase();
     let list = document.getElementById('List');
     let li = list.getElementsByTagName('li');
     for(var i=0;i<li.length;i++)
@@ -89,7 +97,7 @@
   }
   function MyFunc(id) {
     var name = document.getElementById(id).textContent;
-    document.getElementById("Search").value = name;
+    document.getElementById("user_name").value = name;
     let list = document.getElementById('List');
     list.style.display="none";
   }

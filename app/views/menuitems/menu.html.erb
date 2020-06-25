@@ -14,7 +14,7 @@
     <%= form_with(url: "/menus", method: "post" ,class: "Add-NewMenu") do %>
       <div class="New-Menu">
         <h1 class="AddMenu">Menu name :</h1>
-        <%= text_field_tag("name", nil, placeholder: "Type here", class: "MenuName") %>
+        <%= text_field_tag("name", nil, placeholder: "Type here", class: "MenuName",autofocus: "autofocus") %>
       </div>
       <div class="Submit-button">
         <%= submit_tag("Add", class: "Add",onclick: "myFunction()") %>

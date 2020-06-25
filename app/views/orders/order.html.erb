@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <%# <script src="https://kit.fontawesome.com/fc0bcca8a3.js" crossorigin="anonymous"></script> %>
+    <script src="https://kit.fontawesome.com/fc0bcca8a3.js" crossorigin="anonymous"></script>
     <style>
       .Orders-design{
         color: #f53d30;
@@ -15,11 +15,11 @@
   <body>
     <div class="OrderContainer">
       <%= form_with(url: "/orders/hold", method: "post") do %>
-        <div class="Report">
+        <div class="Report" >
           <h1>Start Date:</h1>
-          <input class="Start" type="Date" placeholder="dd/mm/yyyy" name="from_date">
+          <%= date_field_tag("from_date", nil, class: "Start" , placeholder: "dd/mm/yyyy") %>
           <h1>End Date:</h1>
-          <input class="End" type="Date" placeholder="dd/mm/yyyy" name="to_date">
+          <%= date_field_tag("to_date", nil, class: "End" , placeholder: "dd/mm/yyyy") %>
         </div>
         <div class="Rep">
           <%= submit_tag("View Report",class: "View") %>
@@ -34,12 +34,12 @@
         </div>
         <div class="Date">
           <div>
-            <h1>From-Date :</h1>
-            <h2><%= @from %></h2>
+            <h1>From-Date:</h1>
+            <h2><%= Date.parse(@from).strftime("%d/%b/%y") %></h2>
           </div>
           <div>
-            <h1>To-Date :</h1>
-            <h2><%= @to %></h2>
+            <h1>To-Date:</h1>
+            <h2><%= Date.parse(@to).strftime("%d/%b/%y") %></h2>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <tr>
             <td><%= order.id%></td>
             <td><%= order.user_id%></td>
-            <td><%= order.ordered_at.strftime("%d-%b-%Y")%></td>
+            <td><%= order.ordered_at.strftime("%d-%b")%></td>
             <td><%= order.delivered_at ? "Delivered" : "Pending"%>
                 <input type="image" src="details.svg" alt="Submit" class="Details1" onclick=func(<%= order.id%>)></td>
           </tr>
@@ -82,7 +82,7 @@
       <% end %>
       <% if @from=="" || @to=="" ||Order.display(@from,@to,@filter)==[]%>
         <div class="Report-container">
-          <h1 class="Orders-title1">Orders-not Found </h1>
+          <h1 class="Orders-title2">Orders-not Found </h1>
         </div>
       <% else %>
         <% Order.display(@from,@to,@filter).each do |order|%>
@@ -137,6 +137,7 @@
       <% end %>
     </div>
   </body>
+
 </html>
 <script>
 function func(id){

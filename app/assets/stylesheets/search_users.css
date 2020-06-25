@@ -18,6 +18,7 @@
   height: 2.5vw;
   width: 30%;
   font-size: 1.3vw;
+  padding-left: 1vw;
 }
 .View-details {
   background-color: #2f2869;
@@ -123,18 +124,7 @@
   padding-top: 1.5vw;
   padding-bottom: 4vw;
 }
-.Current-user1 {
-  display: flex;
-  margin-top: 2vw;
-  margin-left: 25vw;
-  font-size: 1.8vw;
-}
-.Current-user1 h1 {
-  font-weight: 600;
-}
-.Current-user1 p {
-  margin-left: 1.4vw;
-}
+
 .Searchcontainer1-image {
   display: flex;
   justify-content: center;

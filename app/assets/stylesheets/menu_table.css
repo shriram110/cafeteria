@@ -49,7 +49,6 @@
   width: 5vw;
   margin-bottom: 0.2vw;
 }
-
 .Category-name {
   margin-left: 3vw;
   font-size: 1.5vw;
@@ -82,7 +81,7 @@
 }
 .Act-Menu {
   display: flex;
-  margin-top: 2vw;
+  padding-top: 10vw;
   font-size: 2vw;
   font-weight: 600;
 }
@@ -95,7 +94,7 @@
 .Modal-arrow {
   width: 3.6%;
   position: fixed;
-  background-color: rgb(240, 153, 248);
+  background-color: #def2f1;
   padding: 1vw;
   border-radius: 50%;
   margin-left: 93vw;
@@ -141,5 +140,9 @@
   }
   .Act-Menu {
     font-size: 3vw;
+  }
+  .Modal-arrow {
+    width: 5%;
+    margin-top: 25rem;
   }
 }
