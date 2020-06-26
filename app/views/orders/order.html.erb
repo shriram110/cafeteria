@@ -32,34 +32,7 @@
           <%= image_submit_tag("filter1.png",class: "Filter-image",onclick: "func2()") %>
           <h2>Filter</h2>
         </div>
-        <div class="Date">
-          <div>
-            <h1>From-Date:</h1>
-            <h2><%= @from?Date.parse(@from).strftime("%d/%b/%y"): @fron %></h2>
-          </div>
-          <div>
-            <h1>To-Date:</h1>
-            <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
-          </div>
-        </div>
-      </div>
-      <table class="Report-table">
-        <tr>
-          <th>Order-Id</th>
-          <th>User-Id</th>
-          <th>Ordered on</th>
-          <th style="padding-right:5vw;">Delivery Status</th>
-        </tr>
-        <% Order.display(@from,@to,@filter).each do |order|%>
-          <tr>
-            <td><%= order.id%></td>
-            <td><%= order.user_id%></td>
-            <td><%= order.ordered_at.strftime("%d-%b")%></td>
-            <td><%= order.delivered_at ? "Delivered" : "Pending"%>
-                <input type="image" src="details.svg" alt="Submit" class="Details1" onclick=func(<%= order.id%>)></td>
-          </tr>
-        <% end %>
-      </table>
+
       <%= form_with(url: "/orders/select", method: "post") do %>
         <div class="Filter-Modal" id="filter">
           <div class="Filter">
@@ -134,6 +107,34 @@
             </div>
           </div>
         <% end %>
+        <div class="Date">
+          <div>
+            <h1>From-Date:</h1>
+            <h2><%= @from?Date.parse(@from).strftime("%d/%b/%y"): @fron %></h2>
+          </div>
+          <div>
+            <h1>To-Date:</h1>
+            <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
+          </div>
+        </div>
+      </div>
+      <table class="Report-table">
+        <tr>
+          <th>Order-Id</th>
+          <th>User-Id</th>
+          <th>Ordered on</th>
+          <th style="padding-right:5vw;">Delivery Status</th>
+        </tr>
+        <% Order.display(@from,@to,@filter).each do |order|%>
+          <tr>
+            <td><%= order.id%></td>
+            <td><%= order.user_id%></td>
+            <td><%= order.ordered_at.strftime("%d-%b")%></td>
+            <td><%= order.delivered_at ? "Delivered" : "Pending"%>
+                <input type="image" src="details.svg" alt="Submit" class="Details1" onclick=func(<%= order.id%>)></td>
+          </tr>
+        <% end %>
+      </table>
       <% end %>
     </div>
   </body>

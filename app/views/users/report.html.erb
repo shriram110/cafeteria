@@ -26,35 +26,6 @@
         <div class="Title-box">
           <h1 class="Orders-title1">Orders Table</h1>
         </div>
-        <div class="Date">
-          <div>
-            <h1>From-Date:</h1>
-            <h2><%= @from?Date.parse(@from).strftime("%d/%b/%y"): @fron %></h2>
-          </div>
-          <div>
-            <h1>To-Date:</h1>
-            <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
-          </div>
-        </div>
-        <table class="Report-table">
-          <tr>
-            <th>Order-Id</th>
-            <th>User-Id</th>
-            <th>Ordered on</th>
-            <th style="padding-right:5vw;">Delivery Status</th>
-          </tr>
-          <% User.show1(@from,@to,@users).each do |order|%>
-            <tr>
-              <td><%= order.id%></td>
-              <td><%= order.user_id%></td>
-              <td><%= order.ordered_at.strftime("%d-%b")%></td>
-              <td>
-                <%= order.delivered_at ? "Delivered" : "Pending"%>
-                <%= image_submit_tag('details.svg',class: "Details1",onclick: "func(#{order.id})") %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
       </div>
       <% if @users==nil || @from=="" || @to=="" ||User.show1(@from,@to,@users)==[]%>
         <div class="Report-container">
@@ -94,6 +65,35 @@
             </div>
           </div>
         <% end %>
+        <div class="Date">
+          <div>
+            <h1>From-Date:</h1>
+            <h2><%= @from?Date.parse(@from).strftime("%d/%b/%y"): @fron %></h2>
+          </div>
+          <div>
+            <h1>To-Date:</h1>
+            <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
+          </div>
+        </div>
+        <table class="Report-table">
+          <tr>
+            <th>Order-Id</th>
+            <th>User-Id</th>
+            <th>Ordered on</th>
+            <th style="padding-right:5vw;">Delivery Status</th>
+          </tr>
+          <% User.show1(@from,@to,@users).each do |order|%>
+            <tr>
+              <td><%= order.id%></td>
+              <td><%= order.user_id%></td>
+              <td><%= order.ordered_at.strftime("%d-%b")%></td>
+              <td>
+                <%= order.delivered_at ? "Delivered" : "Pending"%>
+                <%= image_submit_tag('details.svg',class: "Details1",onclick: "func(#{order.id})") %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
       <% end %>
     </div>
   </body>
