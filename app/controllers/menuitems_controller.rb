@@ -44,10 +44,7 @@ class MenuitemsController < ApplicationController
 
   def update
     menu_id = params[:id]
-    array = params[:menuitem_name].split("/")
-    menuitem_name = array[0]
-    category = array[1]
-    menuitem = Menuitem.find_by("menu_id = ? and name = ? and category_name = ? ", menu_id, menuitem_name, category)
+    menuitem = @menuitems
     name = (params[:Name] == "") ? menuitem.name : params[:Name]
     price = (params[:price] == "") ? menuitem.price : params[:price]
     description = (params[:description] == "") ? menuitem.description : params[:description]

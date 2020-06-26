@@ -12,6 +12,7 @@
         <%= button_tag(value="Back",class: "Back2") %>
       </form>
     </div>
+    <div class="menu-table1">
     <%= form_with(url: "/pendingorders/new", method: "patch") do %>
       <div class="Report" >
         <h1>Start Date:</h1>
@@ -21,15 +22,16 @@
       </div>
       <%= submit_tag("View Report",class: "View") %>
     <% end %>
+    <hr>
     <div class="Report-container">
       <div class="Title-box">
-        <h1 class="Orders-title">Orders Table</h1>
+        <h1 class="Orders-title1">Orders Table</h1>
       </div>
     </div>
-    <div class="menu-table">
+
       <% if @from=="" || @to=="" ||Order.display(@from,@to,@filter)==[]%>
         <div class="Report-container">
-          <h1 class="Orders-title1">Orders-not Found </h1>
+          <h1 class="Orders-title2">Orders-not Found </h1>
         </div>
       <% else %>
         <% Order.display(@from,@to,@filter).each do |order|%>
@@ -91,7 +93,7 @@
           <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
         </div>
       </div>
-      <table>
+      <table class="Report-table">
         <tr>
           <th class="menu-namecolumn">Order-Id</th>
           <th>User-id</th>

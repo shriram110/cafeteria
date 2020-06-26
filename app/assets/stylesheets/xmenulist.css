@@ -37,12 +37,16 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.menu-table {
+.menu-table,
+.menu-table1 {
   margin: 0 auto;
   padding: 1.4vw 2vw;
   width: 52vw;
   background: linear-gradient(90deg, mediumvioletred, #6827b0);
   margin-bottom: 3vw;
+}
+.menu-table1 {
+  width: 70%;
 }
 .TableMenu {
   margin-bottom: 2vw;
@@ -350,10 +354,14 @@
     line-height: 3.6vw;
     width: 80vw;
   }
-  .menu-table {
+  .menu-table,
+  .menu-table1 {
     padding: 2vw 2.5vw;
     width: 78vw;
     margin-top: 3.5vw;
+  }
+  .menu-table1 {
+    width: 90%;
   }
   .table-head,
   .Cart-head,
