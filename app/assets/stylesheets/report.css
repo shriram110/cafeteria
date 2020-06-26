@@ -281,7 +281,7 @@ hr {
   margin-left: 1vw;
   margin-right: 0.7vw;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .OrderContainer {
     width: 90%;
     margin-top: 10vw;

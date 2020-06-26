@@ -29,11 +29,11 @@
         <div class="Date">
           <div>
             <h1>From-Date:</h1>
-            <h2><%=Date.parse(@from).strftime("%d/%b/%y") %></h2>
+            <h2><%= @from?Date.parse(@from).strftime("%d/%b/%y"): @fron %></h2>
           </div>
           <div>
             <h1>To-Date:</h1>
-            <h2><%= Date.parse(@to).strftime("%d/%b/%y")%></h2>
+            <h2><%= @to?Date.parse(@to).strftime("%d/%b/%y"): @to %></h2>
           </div>
         </div>
         <table class="Report-table">

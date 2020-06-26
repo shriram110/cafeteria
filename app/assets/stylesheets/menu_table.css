@@ -1,5 +1,3 @@
-.MenuList-OwnerPage {
-}
 .Menu {
   background-color: #def2f1;
   margin-left: 16vw;
@@ -100,7 +98,7 @@
   margin-left: 93vw;
   margin-top: 28vw;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .Menu {
     width: 67%;
     margin-left: 4vw;
